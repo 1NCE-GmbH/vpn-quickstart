@@ -9,6 +9,5 @@ services:
       - "/dev/net/tun:/dev/net/tun"
     restart: unless-stopped
     volumes:
-      - /home/ubuntu/openvpn/:/vpn
-    ports:
+      - /openvpn-client:/vpn-config
     command: "--config /vpn/client.conf --auth-nocache"
