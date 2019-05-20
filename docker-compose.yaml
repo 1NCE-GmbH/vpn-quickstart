@@ -1,0 +1,14 @@
+version: "2"
+services:
+  openvpn_client:
+    build: 
+      context: ./openvpn
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
+    restart: unless-stopped
+    volumes:
+      - /home/ubuntu/openvpn/:/vpn
+    ports:
+    command: "--config /vpn/client.conf --auth-nocache"
